@@ -1,0 +1,7 @@
+# Android 原生项目目录
+# 此目录会在运行 `cap add android` 或 `cap sync` 时自动生成
+# 包含完整的 Android Studio 项目文件
+
+# 初始化 Android 项目命令：
+# pnpm cap add android
+# pnpm cap sync

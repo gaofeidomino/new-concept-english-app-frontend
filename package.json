@@ -1,0 +1,44 @@
+{
+  "name": "new-concept-english-app",
+  "version": "1.0.0",
+  "description": "新概念英语学习App - 跨端前端应用",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "cap:sync": "cap sync",
+    "cap:open:ios": "cap open ios",
+    "cap:open:android": "cap open android",
+    "cap:run:ios": "cap run ios",
+    "cap:run:android": "cap run android",
+    "type-check": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@capacitor/app": "^6.1.2",
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/haptics": "^6.0.1",
+    "@capacitor/ios": "^6.1.2",
+    "@capacitor/keyboard": "^6.0.1",
+    "@capacitor/preferences": "^6.0.1",
+    "@capacitor/status-bar": "^6.0.1",
+    "@ionic/vue": "^8.1.0",
+    "ionicons": "^8.1.2",
+    "@ionic/vue-router": "^8.1.0",
+    "pinia": "^2.2.6",
+    "vue": "^3.5.13",
+    "vue-router": "^4.4.5"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.1.2",
+    "@types/node": "^22.10.2",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.5",
+    "vue-tsc": "^2.1.10"
+  },
+  "packageManager": "pnpm@10.14.0"
+}

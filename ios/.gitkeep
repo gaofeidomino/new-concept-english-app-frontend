@@ -1,0 +1,7 @@
+# iOS 原生项目目录
+# 此目录会在运行 `cap add ios` 或 `cap sync` 时自动生成
+# 包含完整的 Xcode 项目文件
+
+# 初始化 iOS 项目命令：
+# pnpm cap add ios
+# pnpm cap sync
