@@ -8,10 +8,10 @@
 
 - **Vue 3** - 渐进式 JavaScript 框架（Composition API）
 - **TypeScript** - 类型安全的 JavaScript
-- **Vite** - 下一代前端构建工具
+- **Vite** - 下一代前端构建工具（最新版）
 - **Ionic Vue** - 移动端 UI 框架
 - **Capacitor** - 跨平台原生应用运行时
-- **TailwindCSS** - 实用优先的 CSS 框架
+- **TailwindCSS 4.0** - 实用优先的 CSS 框架（最新版，使用 @theme 配置）
 - **Pinia** - Vue 状态管理
 - **Vue Router** - Vue 官方路由管理器
 
@@ -49,9 +49,16 @@ Frontend/
 ├── ios/                 # iOS 原生项目（自动生成）
 ├── android/             # Android 原生项目（自动生成）
 ├── capacitor.config.ts  # Capacitor 配置文件
-├── vite.config.ts       # Vite 配置文件
-├── tailwind.config.js   # TailwindCSS 配置
-└── package.json         # 项目依赖
+├── vite.config.ts       # Vite 配置文件（包含 Tailwind 4 插件）
+├── package.json         # 项目依赖
+├── docs/                # 项目文档
+│   ├── SETUP.md         # 初始化指南
+│   ├── QUICKSTART.md    # 快速开始指南
+│   ├── PROJECT_STRUCTURE.md # 项目结构说明
+│   └── UPGRADE_NOTES.md # 升级说明
+└── README.md            # 项目说明（本文件）
+
+**注意**: Tailwind CSS 4.0 使用 `@theme` 在 CSS 中配置，不再需要 `tailwind.config.js`
 
 ```
 
@@ -109,18 +116,27 @@ pnpm cap:run:android
 
 ## 🎨 UI 设计
 
-项目采用 iOS Human Interface Guidelines (HIG) 设计规范，使用 TailwindCSS 实现统一的 iOS 风格 UI。
+项目采用 iOS Human Interface Guidelines (HIG) 设计规范，使用 TailwindCSS 4.0 实现统一的 iOS 风格 UI。
 
 ### 设计 Tokens
 
-- **颜色**: 使用 iOS 系统颜色（蓝色、绿色、红色等）
+所有设计 tokens 在 `src/styles/main.css` 中使用 `@theme` 定义：
+
+- **颜色**: iOS 系统颜色（蓝色、绿色、红色等）
 - **圆角**: iOS 标准圆角（10px, 14px, 20px 等）
 - **字体**: SF Pro Display / SF Pro Text
 - **间距**: iOS 标准间距系统
+- **阴影**: iOS 风格阴影效果
 
 ### 组件
 
 所有组件都遵循 iOS 设计规范，提供一致的用户体验。
+
+### Tailwind 4.0 特性
+
+- 使用 `@tailwindcss/vite` 插件，无需 PostCSS
+- 配置直接在 CSS 中使用 `@theme` 定义
+- 更好的构建性能和开发体验
 
 ## 📦 状态管理
 
@@ -173,6 +189,20 @@ API 请求封装在 `src/utils/api.ts` 中，支持：
 - 遵循 Vue 3 最佳实践
 - 代码注释使用中文
 - 组件和函数命名使用语义化名称
+- 使用 TailwindCSS 4.0 的 `@theme` 定义设计 tokens
+
+## 📚 文档
+
+项目相关文档位于 `docs/` 目录：
+
+- [快速开始指南](./docs/QUICKSTART.md) - 快速上手项目
+- [初始化指南](./docs/SETUP.md) - 详细的初始化步骤
+- [项目结构说明](./docs/PROJECT_STRUCTURE.md) - 完整的项目结构说明
+- [升级说明](./docs/UPGRADE_NOTES.md) - Tailwind CSS 4.0 升级说明
+
+## 🔄 升级说明
+
+项目已升级到 Tailwind CSS 4.0，详细变更请查看 [升级说明](./docs/UPGRADE_NOTES.md)
 
 ## 📄 许可证
 

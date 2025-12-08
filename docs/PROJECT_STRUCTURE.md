@@ -6,18 +6,21 @@
 Frontend/
 ├── .gitignore                 # Git 忽略文件配置
 ├── .env.example               # 环境变量示例（需要手动创建）
-├── README.md                  # 项目说明文档
-├── SETUP.md                   # 初始化指南
-├── PROJECT_STRUCTURE.md       # 本文件 - 项目结构说明
+├── README.md                  # 项目说明文档（项目根目录）
 │
 ├── package.json               # 项目依赖和脚本配置
 ├── tsconfig.json              # TypeScript 配置
 ├── tsconfig.node.json         # Node.js TypeScript 配置
-├── vite.config.ts             # Vite 构建配置
-├── tailwind.config.js         # TailwindCSS 配置
-├── postcss.config.js          # PostCSS 配置
+├── vite.config.ts             # Vite 构建配置（包含 Tailwind 4 插件）
 ├── capacitor.config.ts        # Capacitor 配置
 ├── index.html                 # HTML 入口文件
+│
+├── docs/                      # 项目文档目录
+│   ├── README.md              # 文档索引
+│   ├── QUICKSTART.md          # 快速开始指南
+│   ├── SETUP.md               # 初始化指南
+│   ├── PROJECT_STRUCTURE.md   # 本文件 - 项目结构说明
+│   └── UPGRADE_NOTES.md       # 升级说明
 │
 ├── src/                       # 源代码目录
 │   ├── main.ts                # 应用入口文件
@@ -82,10 +85,11 @@ Frontend/
 ### 配置文件
 
 - **package.json**: 项目依赖、脚本命令、包管理器配置
-- **vite.config.ts**: Vite 构建工具配置，包含路径别名、插件等
+- **vite.config.ts**: Vite 构建工具配置，包含路径别名、插件等（包含 Tailwind 4 插件）
 - **tsconfig.json**: TypeScript 编译配置
-- **tailwind.config.js**: TailwindCSS 配置，包含 iOS 风格设计 tokens
 - **capacitor.config.ts**: Capacitor 跨平台配置
+
+**注意**: Tailwind CSS 4.0 使用 `@theme` 在 CSS 中配置，不再需要 `tailwind.config.js` 和 `postcss.config.js`
 
 ### 核心文件
 

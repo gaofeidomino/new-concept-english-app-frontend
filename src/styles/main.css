@@ -1,22 +1,103 @@
 /**
  * 主样式文件
- * 包含 TailwindCSS 指令和全局样式
+ * Tailwind CSS 4.0 配置
+ * 使用 @theme 指令定义设计 tokens
  */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/**
+ * iOS 风格设计系统
+ * 使用 @theme 定义自定义 tokens
+ */
+@theme {
+  /* iOS 系统颜色 - 使用 Tailwind 4 的颜色命名规范 */
+  --color-ios-blue: #007AFF;
+  --color-ios-blue-light: #5AC8FA;
+  --color-ios-blue-dark: #0A84FF;
+  
+  --color-ios-green: #34C759;
+  --color-ios-green-light: #30D158;
+  --color-ios-green-dark: #32D74B;
+  
+  --color-ios-red: #FF3B30;
+  --color-ios-red-light: #FF453A;
+  --color-ios-red-dark: #FF453A;
+  
+  --color-ios-orange: #FF9500;
+  --color-ios-orange-light: #FF9F0A;
+  --color-ios-orange-dark: #FF9F0A;
+  
+  --color-ios-yellow: #FFCC00;
+  --color-ios-yellow-light: #FFD60A;
+  --color-ios-yellow-dark: #FFD60A;
+  
+  --color-ios-purple: #AF52DE;
+  --color-ios-purple-light: #BF5AF2;
+  --color-ios-purple-dark: #BF5AF2;
+  
+  /* iOS 灰色系统 */
+  --color-ios-gray-50: #F2F2F7;
+  --color-ios-gray-100: #E5E5EA;
+  --color-ios-gray-200: #D1D1D6;
+  --color-ios-gray-300: #C7C7CC;
+  --color-ios-gray-400: #AEAEB2;
+  --color-ios-gray-500: #8E8E93;
+  --color-ios-gray-600: #636366;
+  --color-ios-gray-700: #48484A;
+  --color-ios-gray-800: #3A3A3C;
+  --color-ios-gray-900: #2C2C2E;
+  --color-ios-gray-950: #1C1C1E;
+  
+  /* 语义化颜色 */
+  --color-primary: #007AFF;
+  --color-primary-light: #5AC8FA;
+  --color-primary-dark: #0A84FF;
+  
+  --color-background: #FFFFFF;
+  --color-background-secondary: #F2F2F7;
+  --color-background-tertiary: #FFFFFF;
+  
+  --color-text-primary: #000000;
+  --color-text-secondary: #3C3C43;
+  --color-text-tertiary: #8E8E93;
+  --color-text-inverse: #FFFFFF;
+  
+  /* iOS 风格圆角 - 使用 radius- 前缀生成 rounded-* 工具类 */
+  --radius-ios: 10px;
+  --radius-ios-lg: 14px;
+  --radius-ios-xl: 20px;
+  --radius-ios-2xl: 28px;
+  
+  /* iOS 风格字体 - 使用 font- 前缀生成 font-* 工具类 */
+  --font-ios: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, sans-serif;
+  
+  /* iOS 风格阴影 - 使用 shadow- 前缀生成 shadow-* 工具类 */
+  --shadow-ios: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-ios-lg: 0 4px 16px rgba(0, 0, 0, 0.15);
+  --shadow-ios-xl: 0 8px 24px rgba(0, 0, 0, 0.2);
+  
+  /* iOS 风格间距 - 使用 spacing- 前缀生成 p-*, m-*, gap-* 等工具类 */
+  --spacing-ios-xs: 4px;
+  --spacing-ios-sm: 8px;
+  --spacing-ios-md: 16px;
+  --spacing-ios-lg: 24px;
+  --spacing-ios-xl: 32px;
+}
 
 /**
  * 全局基础样式
  */
 @layer base {
   * {
-    @apply font-ios;
+    font-family: var(--font-ios);
   }
 
   body {
-    @apply bg-background text-text-primary antialiased;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     /* iOS 安全区域适配 */
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
@@ -37,25 +118,59 @@
 @layer components {
   /* iOS 风格卡片 */
   .ios-card {
-    @apply bg-white rounded-ios shadow-ios p-ios-md;
+    background-color: white;
+    border-radius: var(--radius-ios);
+    box-shadow: var(--shadow-ios);
+    padding: var(--spacing-ios-md);
   }
 
   /* iOS 风格按钮 */
   .ios-button {
-    @apply bg-primary text-white rounded-ios-lg px-ios-lg py-ios-sm font-medium;
-    @apply active:opacity-80 transition-opacity;
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: var(--radius-ios-lg);
+    padding-left: var(--spacing-ios-lg);
+    padding-right: var(--spacing-ios-lg);
+    padding-top: var(--spacing-ios-sm);
+    padding-bottom: var(--spacing-ios-sm);
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+  
+  .ios-button:active {
+    opacity: 0.8;
   }
 
   /* iOS 风格输入框 */
   .ios-input {
-    @apply bg-background-secondary rounded-ios px-ios-md py-ios-sm;
-    @apply border-none outline-none focus:ring-2 focus:ring-primary;
+    background-color: var(--color-background-secondary);
+    border-radius: var(--radius-ios);
+    padding-left: var(--spacing-ios-md);
+    padding-right: var(--spacing-ios-md);
+    padding-top: var(--spacing-ios-sm);
+    padding-bottom: var(--spacing-ios-sm);
+    border: none;
+    outline: none;
+  }
+  
+  .ios-input:focus {
+    ring: 2px;
+    ring-color: var(--color-primary);
   }
 
   /* iOS 风格列表项 */
   .ios-list-item {
-    @apply bg-white px-ios-md py-ios-sm border-b border-ios-gray-100;
-    @apply active:bg-ios-gray-50 transition-colors;
+    background-color: white;
+    padding-left: var(--spacing-ios-md);
+    padding-right: var(--spacing-ios-md);
+    padding-top: var(--spacing-ios-sm);
+    padding-bottom: var(--spacing-ios-sm);
+    border-bottom: 1px solid var(--color-ios-gray-100);
+    transition: background-color 0.2s;
+  }
+  
+  .ios-list-item:active {
+    background-color: var(--color-ios-gray-50);
   }
 }
 
@@ -82,18 +197,28 @@
 
   /* iOS 风格文本 */
   .text-ios-title {
-    @apply text-2xl font-semibold text-text-primary;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
   }
 
   .text-ios-subtitle {
-    @apply text-lg font-medium text-text-secondary;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
   }
 
   .text-ios-body {
-    @apply text-base text-text-primary;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: var(--color-text-primary);
   }
 
   .text-ios-caption {
-    @apply text-sm text-text-tertiary;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--color-text-tertiary);
   }
 }

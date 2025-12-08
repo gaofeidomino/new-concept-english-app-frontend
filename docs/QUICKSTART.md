@@ -108,9 +108,10 @@ pnpm cap:open:android
 
 ## 📚 文档
 
-- [README.md](./README.md) - 项目详细说明
+- [README.md](../README.md) - 项目详细说明（项目根目录）
 - [SETUP.md](./SETUP.md) - 初始化指南
 - [PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md) - 项目结构说明
+- [UPGRADE_NOTES.md](./UPGRADE_NOTES.md) - 升级说明
 
 ## 🎯 下一步
 
