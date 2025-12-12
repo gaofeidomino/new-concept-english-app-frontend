@@ -8,14 +8,14 @@
           <h2 class="section-title">账户</h2>
           <BaseCard>
             <ion-list>
-              <ion-item button @click="goToProfile" class="ios-list-item">
+              <ion-item button @click="goToProfile">
                 <ion-label>
                   <h3>个人资料</h3>
                   <p>{{ userStore.userName }}</p>
                 </ion-label>
                 <ion-icon :icon="chevronForwardOutline" slot="end" />
               </ion-item>
-              <ion-item button @click="handleLogout" class="ios-list-item">
+              <ion-item button @click="handleLogout">
                 <ion-label>
                   <h3>退出登录</h3>
                 </ion-label>
@@ -25,11 +25,11 @@
         </section>
 
         <!-- 学习设置 -->
-        <section class="settings-section mt-ios-lg">
+        <section class="settings-section mt-6">
           <h2 class="section-title">学习设置</h2>
           <BaseCard>
             <ion-list>
-              <ion-item class="ios-list-item">
+              <ion-item>
                 <ion-label>
                   <h3>每日学习目标</h3>
                   <p>{{ settingsStore.settings.study.dailyGoal }} 分钟</p>
@@ -42,7 +42,7 @@
                   修改
                 </ion-button>
               </ion-item>
-              <ion-item class="ios-list-item">
+              <ion-item>
                 <ion-label>
                   <h3>自动播放</h3>
                   <p>课程自动播放音频</p>
@@ -52,7 +52,7 @@
                   @ionChange="handleAutoPlayChange"
                 />
               </ion-item>
-              <ion-item class="ios-list-item">
+              <ion-item>
                 <ion-label>
                   <h3>播放速度</h3>
                   <p>{{ settingsStore.settings.study.playbackSpeed }}x</p>
@@ -70,11 +70,11 @@
         </section>
 
         <!-- 通知设置 -->
-        <section class="settings-section mt-ios-lg">
+        <section class="settings-section mt-6">
           <h2 class="section-title">通知设置</h2>
           <BaseCard>
             <ion-list>
-              <ion-item class="ios-list-item">
+              <ion-item>
                 <ion-label>
                   <h3>启用通知</h3>
                   <p>接收学习提醒和通知</p>
@@ -86,7 +86,6 @@
               </ion-item>
               <ion-item
                 v-if="settingsStore.settings.notifications.enabled"
-                class="ios-list-item"
               >
                 <ion-label>
                   <h3>每日提醒</h3>
@@ -102,11 +101,11 @@
         </section>
 
         <!-- 外观设置 -->
-        <section class="settings-section mt-ios-lg">
+        <section class="settings-section mt-6">
           <h2 class="section-title">外观</h2>
           <BaseCard>
             <ion-list>
-              <ion-item class="ios-list-item">
+              <ion-item>
                 <ion-label>
                   <h3>主题</h3>
                   <p>{{ themeLabel }}</p>
@@ -115,7 +114,7 @@
                   更改
                 </ion-button>
               </ion-item>
-              <ion-item class="ios-list-item">
+              <ion-item>
                 <ion-label>
                   <h3>字体大小</h3>
                   <p>{{ fontSizeLabel }}</p>
@@ -133,17 +132,17 @@
         </section>
 
         <!-- 关于 -->
-        <section class="settings-section mt-ios-lg">
+        <section class="settings-section mt-6">
           <h2 class="section-title">关于</h2>
           <BaseCard>
             <ion-list>
-              <ion-item button class="ios-list-item">
+              <ion-item button>
                 <ion-label>
                   <h3>版本信息</h3>
                   <p>v1.0.0</p>
                 </ion-label>
               </ion-item>
-              <ion-item button class="ios-list-item">
+              <ion-item button>
                 <ion-label>
                   <h3>帮助与反馈</h3>
                 </ion-label>
@@ -240,18 +239,18 @@ const handleDailyReminderChange = (event: CustomEvent) => {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .settings-container {
   max-width: 100%;
   margin: 0 auto;
 }
 
 .section-title {
-  @apply text-ios-subtitle mb-ios-sm px-ios-md;
+  @apply text-sm mb-2 px-4;
   color: #8e8e93;
   font-weight: 600;
-  font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 </style>
+

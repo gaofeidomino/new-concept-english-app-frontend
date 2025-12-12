@@ -3,20 +3,20 @@
 ## 📁 完整目录结构
 
 ```
-Frontend/
+test/
 ├── .gitignore                 # Git 忽略文件配置
-├── .env.example               # 环境变量示例（需要手动创建）
-├── README.md                  # 项目说明文档（项目根目录）
+├── env.d.ts                   # 环境类型定义
+├── README.md                  # 项目说明文档
 │
 ├── package.json               # 项目依赖和脚本配置
 ├── tsconfig.json              # TypeScript 配置
+├── tsconfig.app.json          # 应用 TypeScript 配置
 ├── tsconfig.node.json         # Node.js TypeScript 配置
 ├── vite.config.ts             # Vite 构建配置（包含 Tailwind 4 插件）
 ├── capacitor.config.ts        # Capacitor 配置
 ├── index.html                 # HTML 入口文件
 │
 ├── docs/                      # 项目文档目录
-│   ├── README.md              # 文档索引
 │   ├── QUICKSTART.md          # 快速开始指南
 │   ├── SETUP.md               # 初始化指南
 │   ├── PROJECT_STRUCTURE.md   # 本文件 - 项目结构说明
@@ -25,10 +25,9 @@ Frontend/
 ├── src/                       # 源代码目录
 │   ├── main.ts                # 应用入口文件
 │   ├── App.vue                # 根组件
-│   ├── vite-env.d.ts          # Vite 环境类型定义
+│   ├── env.d.ts               # Vite 环境类型定义
 │   │
 │   ├── assets/                # 静态资源
-│   │   └── .gitkeep
 │   │
 │   ├── components/            # 可复用组件
 │   │   ├── NavBar.vue         # 导航栏组件
@@ -42,7 +41,7 @@ Frontend/
 │   │
 │   ├── pages/                 # 页面组件
 │   │   ├── HomePage.vue       # 首页
-│   │   ├── SettingsPage.vue   # 设置页
+│   │   ├── SettingsPage.vue  # 设置页
 │   │   └── NotFoundPage.vue  # 404 页面
 │   │
 │   ├── plugins/               # 插件配置
@@ -61,23 +60,18 @@ Frontend/
 │   ├── styles/                # 样式文件
 │   │   └── main.css           # 主样式文件（TailwindCSS）
 │   │
-│   ├── types/                 # TypeScript 类型定义
-│   │   └── index.ts           # 全局类型定义
+│   ├── utils/                 # 工具函数
+│   │   ├── api.ts             # API 请求封装
+│   │   ├── capacitor.ts       # Capacitor 工具函数
+│   │   ├── storage.ts         # 存储工具（支持 Web/Native）
+│   │   └── index.ts           # 工具函数统一导出
 │   │
-│   └── utils/                 # 工具函数
-│       ├── api.ts             # API 请求封装
-│       ├── capacitor.ts       # Capacitor 工具函数
-│       ├── storage.ts         # 存储工具（支持 Web/Native）
-│       └── index.ts           # 工具函数统一导出
+│   └── __tests__/             # 测试文件
+│       └── App.spec.ts        # App 组件测试
 │
 ├── capacitor/                 # Capacitor 配置目录（自动生成）
-│   └── .gitkeep
-│
 ├── ios/                       # iOS 原生项目（运行 cap add ios 后生成）
-│   └── .gitkeep
-│
 └── android/                   # Android 原生项目（运行 cap add android 后生成）
-    └── .gitkeep
 ```
 
 ## 📝 文件说明
@@ -124,7 +118,7 @@ Frontend/
 
 ## 🎨 设计系统
 
-项目使用 TailwindCSS 实现 iOS 风格设计系统：
+项目使用 TailwindCSS 4.0 实现 iOS 风格设计系统：
 
 - **颜色**: iOS 系统颜色（蓝色 #007AFF、绿色 #34C759 等）
 - **圆角**: iOS 标准圆角（10px, 14px, 20px, 28px）
@@ -139,7 +133,6 @@ Frontend/
 1. **WidgetKit 通信**: `src/utils/capacitor.ts` 中的 `widgetKit` 对象
 2. **通知功能**: `src/plugins/capacitor.ts` 中的 `notifications` 对象
 3. **文件系统**: `src/plugins/capacitor.ts` 中的 `fileSystem` 对象
-4. **小程序端**: 可单独创建 `miniprogram/` 目录
 
 ## 📱 平台支持
 
@@ -153,3 +146,4 @@ Frontend/
 2. 运行 `pnpm dev` 启动开发服务器
 3. 根据需要运行 `pnpm cap add ios` 或 `pnpm cap add android` 初始化原生项目
 4. 开始开发你的功能！
+

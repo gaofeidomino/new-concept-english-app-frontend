@@ -1,4 +1,4 @@
-import { CapacitorConfig } from '@capacitor/cli';
+import { CapacitorConfig } from '@capacitor/cli'
 
 const config: CapacitorConfig = {
   appId: 'com.newconceptenglish.app',
@@ -7,39 +7,24 @@ const config: CapacitorConfig = {
   server: {
     androidScheme: 'https',
     iosScheme: 'https',
-    // 开发时允许访问本地后端
-    url: 'http://localhost:5173',
-    cleartext: true
   },
   plugins: {
-    // 状态栏配置
+    SplashScreen: {
+      launchShowDuration: 2000,
+      launchAutoHide: true,
+      backgroundColor: '#ffffff',
+      androidSplashResourceName: 'splash',
+      androidScaleType: 'CENTER_CROP',
+      showSpinner: false,
+      iosSpinnerStyle: 'small',
+      spinnerColor: '#999999',
+    },
     StatusBar: {
       style: 'light',
-      backgroundColor: '#000000'
+      backgroundColor: '#000000',
     },
-    // 键盘配置
-    Keyboard: {
-      resize: 'body',
-      style: 'dark',
-      resizeOnFullScreen: true
-    },
-    // App 配置
-    App: {
-      // 后台保持运行
-      backgroundDuration: 300
-    }
   },
-  // iOS 特定配置
-  ios: {
-    scheme: 'newconceptenglish',
-    contentInset: 'automatic'
-  },
-  // Android 特定配置
-  android: {
-    allowMixedContent: true,
-    captureInput: true,
-    webContentsDebuggingEnabled: true
-  }
-};
+}
 
-export default config;
+export default config
+

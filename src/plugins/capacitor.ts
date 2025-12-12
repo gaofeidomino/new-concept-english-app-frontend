@@ -5,7 +5,7 @@
 
 import { App } from '@capacitor/app'
 import { StatusBar, Style } from '@capacitor/status-bar'
-import { Keyboard } from '@capacitor/keyboard'
+import { Keyboard, KeyboardResize } from '@capacitor/keyboard'
 import { Capacitor } from '@capacitor/core'
 
 /**
@@ -21,7 +21,7 @@ export function initCapacitorPlugins() {
   StatusBar.setBackgroundColor({ color: '#ffffff' })
 
   // 配置键盘
-  Keyboard.setResizeMode({ mode: 'body' })
+  Keyboard.setResizeMode({ mode: KeyboardResize.Body })
 
   // 监听应用状态变化
   App.addListener('appStateChange', ({ isActive }) => {
@@ -66,3 +66,4 @@ export const fileSystem = {
   // TODO: 实现文件系统功能
   // 可以使用 @capacitor/filesystem 插件
 }
+

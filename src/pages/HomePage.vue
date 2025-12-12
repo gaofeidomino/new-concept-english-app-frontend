@@ -2,28 +2,28 @@
   <ion-page>
     <NavBar title="新概念英语" />
     <ion-content :fullscreen="true" class="ion-padding">
-      <div class="home-container">
+      <div class="max-w-full mx-auto">
         <!-- 欢迎区域 -->
-        <section class="welcome-section">
-          <h1 class="text-ios-title mb-ios-sm">欢迎回来</h1>
-          <p class="text-ios-body text-text-secondary">
+        <section class="py-4">
+          <h1 class="text-2xl font-bold mb-2">欢迎回来</h1>
+          <p class="text-gray-600">
             {{ userName }}，今天也要加油学习哦！
           </p>
         </section>
 
         <!-- 学习统计卡片 -->
-        <section class="stats-section mt-ios-lg">
+        <section class="mt-6">
           <BaseCard>
-            <div class="stats-grid">
-              <div class="stat-item">
+            <div class="grid grid-cols-3 gap-4 text-center">
+              <div>
                 <div class="stat-value">{{ todayStudyTime }}</div>
                 <div class="stat-label">今日学习（分钟）</div>
               </div>
-              <div class="stat-item">
+              <div>
                 <div class="stat-value">{{ totalDays }}</div>
                 <div class="stat-label">连续学习（天）</div>
               </div>
-              <div class="stat-item">
+              <div>
                 <div class="stat-value">{{ completedLessons }}</div>
                 <div class="stat-label">已完成课程</div>
               </div>
@@ -32,8 +32,8 @@
         </section>
 
         <!-- 快速开始 -->
-        <section class="quick-start-section mt-ios-lg">
-          <h2 class="text-ios-subtitle mb-ios-md">快速开始</h2>
+        <section class="mt-6">
+          <h2 class="text-lg font-semibold mb-4">快速开始</h2>
           <BaseCard>
             <ion-list>
               <ion-item
@@ -41,7 +41,6 @@
                 :key="course.id"
                 button
                 @click="goToCourse(course.id)"
-                class="ios-list-item"
               >
                 <ion-label>
                   <h3>{{ course.title }}</h3>
@@ -54,16 +53,16 @@
         </section>
 
         <!-- 学习目标 -->
-        <section class="goal-section mt-ios-lg">
+        <section class="mt-6">
           <BaseCard>
-            <div class="goal-content">
-              <div class="goal-info">
-                <h3 class="text-ios-subtitle">今日目标</h3>
-                <p class="text-ios-caption text-text-tertiary">
+            <div class="flex flex-col gap-2">
+              <div class="flex justify-between items-center">
+                <h3 class="text-lg font-semibold">今日目标</h3>
+                <p class="text-sm text-gray-500">
                   {{ todayProgress }}/{{ dailyGoal }} 分钟
                 </p>
               </div>
-              <div class="goal-progress">
+              <div class="w-full">
                 <ion-progress-bar
                   :value="progressPercentage"
                   color="primary"
@@ -133,22 +132,7 @@ const goToCourse = (courseId: string) => {
 }
 </script>
 
-<style scoped>
-.home-container {
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-.welcome-section {
-  @apply py-ios-md;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  @apply gap-ios-md text-center;
-}
-
+<style lang="less" scoped>
 .stat-value {
   font-size: 24px;
   font-weight: 600;
@@ -160,16 +144,5 @@ const goToCourse = (courseId: string) => {
   font-size: 12px;
   color: #8e8e93;
 }
-
-.goal-content {
-  @apply flex flex-col gap-ios-sm;
-}
-
-.goal-info {
-  @apply flex justify-between items-center;
-}
-
-.goal-progress {
-  width: 100%;
-}
 </style>
+

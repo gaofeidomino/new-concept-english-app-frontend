@@ -104,3 +104,4 @@ class Storage {
 
 // 导出单例
 export const useStorage = () => new Storage()
+

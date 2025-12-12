@@ -65,3 +65,4 @@ export const useAppStore = defineStore('app', () => {
     setLoading
   }
 })
+

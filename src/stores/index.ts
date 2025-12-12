@@ -1,8 +1,7 @@
 /**
- * Pinia Store 入口文件
- * 统一导出所有 store
+ * Pinia Stores 统一导出
  */
+export * from './app'
+export * from './user'
+export * from './settings'
 
-export { useAppStore } from './app'
-export { useUserStore } from './user'
-export { useSettingsStore } from './settings'

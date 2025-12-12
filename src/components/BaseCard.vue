@@ -30,33 +30,34 @@ const cardClass = computed(() => {
 })
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .ios-card {
-  @apply bg-white rounded-ios shadow-ios;
+  @apply bg-white rounded-xl shadow-sm;
   transition: all 0.2s ease;
-}
 
-.ios-card--elevated {
-  @apply shadow-ios-lg;
-}
+  &--elevated {
+    @apply shadow-lg;
+  }
 
-.ios-card--outlined {
-  @apply border border-ios-gray-200 shadow-none;
-}
+  &--outlined {
+    @apply border border-gray-200 shadow-none;
+  }
 
-.ios-card--padding-none {
-  @apply p-0;
-}
+  &--padding-none {
+    @apply p-0;
+  }
 
-.ios-card--padding-sm {
-  @apply p-ios-sm;
-}
+  &--padding-sm {
+    @apply p-3;
+  }
 
-.ios-card--padding-md {
-  @apply p-ios-md;
-}
+  &--padding-md {
+    @apply p-4;
+  }
 
-.ios-card--padding-lg {
-  @apply p-ios-lg;
+  &--padding-lg {
+    @apply p-6;
+  }
 }
 </style>
+

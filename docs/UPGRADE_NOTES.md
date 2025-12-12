@@ -1,120 +1,105 @@
-# 升级到 Tailwind CSS 4.0 说明
+# Tailwind CSS 4.0 升级说明
 
-## 🔄 主要变更
+## 📦 版本信息
 
-### 1. 依赖更新
+- **Tailwind CSS**: 4.0+
+- **@tailwindcss/vite**: 4.1.18+
 
-- **Tailwind CSS**: `^3.4.17` → `^4.0.0`
-- **Vue**: `^3.5.13` → `^3.5.14`
-- **Vite**: `^6.0.5` → `^6.1.0`
-- **Vue Router**: `^4.4.5` → `^4.5.0`
-- 新增: `@tailwindcss/vite` - Tailwind 4 的 Vite 插件
+## 🎯 主要变更
 
-### 2. 配置方式变更
+### 1. 配置方式变更
 
-#### 旧方式 (Tailwind 3)
-- 使用 `tailwind.config.js` 配置文件
-- 使用 PostCSS 处理
-- 使用 `@tailwind` 指令
+**之前** (Tailwind 3.x):
+- 需要 `tailwind.config.js` 配置文件
+- 需要 `postcss.config.js` 配置
 
-#### 新方式 (Tailwind 4)
-- 使用 `@theme` 在 CSS 中定义配置
-- 使用 `@tailwindcss/vite` 插件（无需 PostCSS）
-- 使用 `@import "tailwindcss"` 导入
+**现在** (Tailwind 4.0):
+- ✅ 使用 `@theme` 在 CSS 中直接配置
+- ✅ 使用 `@tailwindcss/vite` 插件，无需 PostCSS
+- ✅ 配置更简洁，性能更好
 
-### 3. 文件变更
+### 2. 配置文件位置
 
-**删除的文件:**
-- `tailwind.config.js` - 配置已迁移到 CSS
-- `postcss.config.js` - Tailwind 4 不再需要 PostCSS
-
-**更新的文件:**
-- `vite.config.ts` - 添加 `@tailwindcss/vite` 插件
-- `src/styles/main.css` - 使用 `@theme` 定义设计 tokens
-- `package.json` - 更新依赖版本
-
-### 4. 自定义 Tokens
-
-所有 iOS 风格的设计 tokens 现在在 `src/styles/main.css` 中使用 `@theme` 定义：
+所有设计 tokens 现在在 `src/styles/main.css` 中使用 `@theme` 定义：
 
 ```css
 @theme {
   --color-ios-blue: #007AFF;
-  --spacing-ios-md: 16px;
   --radius-ios: 10px;
-  --shadow-ios: 0 2px 8px rgba(0, 0, 0, 0.1);
-  --font-ios: -apple-system, ...;
+  --spacing-ios-md: 16px;
+  /* ... */
 }
 ```
 
-这些 tokens 会自动生成对应的 Tailwind 工具类：
-- `bg-ios-blue`, `text-ios-blue`
-- `p-ios-md`, `m-ios-md`, `gap-ios-md`
-- `rounded-ios`
-- `shadow-ios`
-- `font-ios`
+### 3. Vite 插件集成
 
-### 5. 使用方式
+在 `vite.config.ts` 中：
 
-#### 在组件中使用 Tailwind 类名
+```typescript
+import tailwindcss from '@tailwindcss/vite'
 
-```vue
-<template>
-  <div class="bg-ios-blue text-white p-ios-md rounded-ios shadow-ios">
-    <!-- 内容 -->
-  </div>
-</template>
+export default defineConfig({
+  plugins: [
+    vue(),
+    tailwindcss(), // 直接使用，无需 PostCSS
+  ],
+})
 ```
 
-#### 在 CSS 中使用 @apply
+## 🔄 迁移指南
 
-```css
-.my-class {
-  @apply bg-ios-blue p-ios-md rounded-ios;
-}
-```
+### 从 Tailwind 3.x 迁移
 
-#### 使用 CSS 变量
+1. **删除旧配置文件**:
+   - `tailwind.config.js`
+   - `postcss.config.js`
 
-```css
-.my-class {
-  background-color: var(--color-ios-blue);
-  padding: var(--spacing-ios-md);
-  border-radius: var(--radius-ios);
-}
-```
-
-## 🚀 迁移步骤
-
-1. **安装新依赖**
-   ```bash
-   pnpm install
+2. **更新 package.json**:
+   ```json
+   {
+     "dependencies": {
+       "@tailwindcss/vite": "^4.1.18",
+       "tailwindcss": "^4.1.18"
+     }
+   }
    ```
 
-2. **验证配置**
-   - 检查 `vite.config.ts` 是否包含 `tailwindcss()` 插件
-   - 检查 `src/styles/main.css` 是否使用 `@import "tailwindcss"`
+3. **更新 Vite 配置**:
+   - 添加 `@tailwindcss/vite` 插件
+   - 移除 PostCSS 相关配置
 
-3. **测试运行**
-   ```bash
-   pnpm dev
-   ```
+4. **迁移配置到 CSS**:
+   - 将 `tailwind.config.js` 中的配置转换为 `@theme` 语法
+   - 在 `src/styles/main.css` 中定义
 
-4. **检查样式**
-   - 确认所有自定义类名正常工作
-   - 确认 iOS 风格 tokens 正确应用
+## ✨ 新特性
+
+### 1. 更好的性能
+
+- 更快的构建速度
+- 更小的输出文件
+- 更好的开发体验
+
+### 2. 更灵活的配置
+
+- 直接在 CSS 中配置
+- 支持 CSS 变量
+- 更好的类型支持
+
+### 3. 简化的工作流
+
+- 无需 PostCSS
+- 更少的配置文件
+- 更直观的配置方式
+
+## 📚 参考文档
+
+- [Tailwind CSS 4.0 文档](https://tailwindcss.com/docs)
+- [@tailwindcss/vite 插件文档](https://github.com/tailwindlabs/tailwindcss-vite)
 
 ## ⚠️ 注意事项
 
-1. **类名兼容性**: Tailwind 4 保持了与 Tailwind 3 的类名兼容性，大部分类名无需修改
+- 某些 Tailwind 3.x 的插件可能不兼容
+- 自定义工具类需要迁移到 `@theme` 语法
+- 建议在迁移前备份项目
 
-2. **自定义 Tokens**: 如果遇到自定义 tokens 不生效，检查 `@theme` 中的命名是否符合 Tailwind 4 规范
-
-3. **@apply 指令**: `@apply` 指令仍然可用，但建议直接使用 Tailwind 类名以获得更好的性能
-
-4. **构建性能**: Tailwind 4 使用 Vite 插件，构建性能更好，无需 PostCSS 处理
-
-## 📚 参考资源
-
-- [Tailwind CSS 4.0 文档](https://tailwindcss.com/docs)
-- [Tailwind CSS 4.0 迁移指南](https://tailwindcss.com/docs/upgrade-guide)

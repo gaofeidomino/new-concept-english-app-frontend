@@ -2,7 +2,7 @@
 
 ## 📋 前置要求
 
-- Node.js >= 18.0.0
+- Node.js >= 20.19.0 或 >= 22.12.0
 - pnpm >= 8.0.0
 - Xcode (仅 iOS 开发需要)
 - Android Studio (仅 Android 开发需要)
@@ -12,19 +12,17 @@
 ### 1. 安装依赖
 
 ```bash
-cd Frontend
 pnpm install
 ```
 
 ### 2. 配置环境变量
 
-复制 `.env.example` 文件并创建 `.env` 文件：
+创建 `.env` 文件（如需要）：
 
 ```bash
-cp .env.example .env
+# API 基础 URL
+VITE_API_BASE_URL=http://localhost:3000/api
 ```
-
-根据实际情况修改 `.env` 文件中的配置。
 
 ### 3. 初始化 Capacitor（可选）
 
@@ -37,7 +35,7 @@ cp .env.example .env
 pnpm cap add ios
 
 # 同步 Web 代码到 iOS 项目
-pnpm cap sync
+pnpm cap:sync
 
 # 打开 Xcode 项目
 pnpm cap:open:ios
@@ -50,7 +48,7 @@ pnpm cap:open:ios
 pnpm cap add android
 
 # 同步 Web 代码到 Android 项目
-pnpm cap sync
+pnpm cap:sync
 
 # 打开 Android Studio 项目
 pnpm cap:open:android
@@ -98,3 +96,4 @@ A: 检查 Android SDK 版本和 Gradle 配置。确保 Android Studio 已正确�
 - 每次修改 Web 代码后，需要运行 `pnpm cap:sync` 同步到原生项目
 - 原生代码修改后，需要重新构建应用
 - 开发时建议使用 Web 版本进行快速迭代，原生版本用于测试原生功能
+

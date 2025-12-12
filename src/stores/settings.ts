@@ -47,22 +47,22 @@ const defaultSettings: AppSettings = {
 }
 
 export const useSettingsStore = defineStore('settings', () => {
-  // 从本地存储加载设置
-  const settings = ref<AppSettings>(
-    useStorage().getItem('app_settings', defaultSettings)
-  )
+  // 从本地存储加载设置（使用同步方法初始化）
+  const storage = useStorage()
+  const initialSettings = storage.getItemSync<AppSettings>('app_settings', defaultSettings)
+  const settings = ref<AppSettings>(initialSettings || defaultSettings)
 
   // 更新设置
   const updateSettings = (newSettings: Partial<AppSettings>) => {
     settings.value = { ...settings.value, ...newSettings }
     // 保存到本地存储
-    useStorage().setItem('app_settings', settings.value)
+    storage.setItem('app_settings', settings.value)
   }
 
   // 重置设置
   const resetSettings = () => {
     settings.value = { ...defaultSettings }
-    useStorage().setItem('app_settings', settings.value)
+    storage.setItem('app_settings', settings.value)
   }
 
   // 更新通知设置
@@ -97,3 +97,4 @@ export const useSettingsStore = defineStore('settings', () => {
     updateAppearance
   }
 })
+

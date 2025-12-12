@@ -1,6 +1,6 @@
 import { Capacitor } from '@capacitor/core'
 import { App } from '@capacitor/app'
-import { Haptics, ImpactStyle } from '@capacitor/haptics'
+import { Haptics, ImpactStyle, NotificationType } from '@capacitor/haptics'
 import { Keyboard } from '@capacitor/keyboard'
 
 /**
@@ -41,19 +41,19 @@ export const haptics = {
   // 成功反馈
   success: () => {
     if (isNative()) {
-      Haptics.notification({ type: 'success' })
+      Haptics.notification({ type: NotificationType.Success })
     }
   },
   // 警告反馈
   warning: () => {
     if (isNative()) {
-      Haptics.notification({ type: 'warning' })
+      Haptics.notification({ type: NotificationType.Warning })
     }
   },
   // 错误反馈
   error: () => {
     if (isNative()) {
-      Haptics.notification({ type: 'error' })
+      Haptics.notification({ type: NotificationType.Error })
     }
   }
 }
@@ -142,3 +142,4 @@ export const widgetKit = {
     return null
   }
 }
+

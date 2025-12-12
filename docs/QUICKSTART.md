@@ -9,9 +9,9 @@
 - ✅ Vue 3 + TypeScript + Vite 项目配置
 - ✅ Ionic Vue 集成（移动端 UI 框架）
 - ✅ Capacitor 配置（跨平台支持）
-- ✅ TailwindCSS 配置（iOS 风格设计系统）
-- ✅ Pinia 状态管理（3 个示例 Store）
-- ✅ Vue Router 路由配置（3 个示例页面）
+- ✅ TailwindCSS 4.0 配置（iOS 风格设计系统）
+- ✅ Pinia 状态管理（app, user, settings Store）
+- ✅ Vue Router 路由配置（首页、设置页、404页）
 - ✅ 基础组件（NavBar, TabBar, BaseCard, BaseButton）
 - ✅ 工具函数（API、存储、Capacitor）
 - ✅ 类型定义文件
@@ -33,7 +33,6 @@
 ### 1. 安装依赖
 
 ```bash
-cd Frontend
 pnpm install
 ```
 
@@ -57,7 +56,7 @@ pnpm build
 
 ```bash
 pnpm cap add ios
-pnpm cap sync
+pnpm cap:sync
 pnpm cap:open:ios
 ```
 
@@ -65,23 +64,23 @@ pnpm cap:open:ios
 
 ```bash
 pnpm cap add android
-pnpm cap sync
+pnpm cap:sync
 pnpm cap:open:android
 ```
 
 ## 📁 项目结构概览
 
 ```
-Frontend/
+test/
 ├── src/
 │   ├── components/     # 可复用组件
 │   ├── pages/         # 页面组件
-│   ├── stores/         # 状态管理
-│   ├── router/         # 路由配置
-│   ├── utils/          # 工具函数
-│   └── styles/         # 样式文件
+│   ├── stores/        # 状态管理
+│   ├── router/        # 路由配置
+│   ├── utils/         # 工具函数
+│   └── styles/        # 样式文件
 ├── capacitor.config.ts # Capacitor 配置
-└── package.json        # 项目配置
+└── package.json       # 项目配置
 ```
 
 ## 🔧 常用命令
@@ -96,6 +95,12 @@ pnpm build
 # 类型检查
 pnpm type-check
 
+# 代码检查
+pnpm lint
+
+# 格式化
+pnpm format
+
 # Capacitor 同步
 pnpm cap:sync
 
@@ -108,7 +113,7 @@ pnpm cap:open:android
 
 ## 📚 文档
 
-- [README.md](../README.md) - 项目详细说明（项目根目录）
+- [README.md](../README.md) - 项目说明
 - [SETUP.md](./SETUP.md) - 初始化指南
 - [PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md) - 项目结构说明
 - [UPGRADE_NOTES.md](./UPGRADE_NOTES.md) - 升级说明
@@ -131,3 +136,4 @@ pnpm cap:open:android
 ---
 
 **项目已准备就绪，可以开始开发了！** 🎉
+

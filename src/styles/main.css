@@ -15,27 +15,27 @@
   --color-ios-blue: #007AFF;
   --color-ios-blue-light: #5AC8FA;
   --color-ios-blue-dark: #0A84FF;
-  
+
   --color-ios-green: #34C759;
   --color-ios-green-light: #30D158;
   --color-ios-green-dark: #32D74B;
-  
+
   --color-ios-red: #FF3B30;
   --color-ios-red-light: #FF453A;
   --color-ios-red-dark: #FF453A;
-  
+
   --color-ios-orange: #FF9500;
   --color-ios-orange-light: #FF9F0A;
   --color-ios-orange-dark: #FF9F0A;
-  
+
   --color-ios-yellow: #FFCC00;
   --color-ios-yellow-light: #FFD60A;
   --color-ios-yellow-dark: #FFD60A;
-  
+
   --color-ios-purple: #AF52DE;
   --color-ios-purple-light: #BF5AF2;
   --color-ios-purple-dark: #BF5AF2;
-  
+
   /* iOS 灰色系统 */
   --color-ios-gray-50: #F2F2F7;
   --color-ios-gray-100: #E5E5EA;
@@ -48,35 +48,35 @@
   --color-ios-gray-800: #3A3A3C;
   --color-ios-gray-900: #2C2C2E;
   --color-ios-gray-950: #1C1C1E;
-  
+
   /* 语义化颜色 */
   --color-primary: #007AFF;
   --color-primary-light: #5AC8FA;
   --color-primary-dark: #0A84FF;
-  
+
   --color-background: #FFFFFF;
   --color-background-secondary: #F2F2F7;
   --color-background-tertiary: #FFFFFF;
-  
+
   --color-text-primary: #000000;
   --color-text-secondary: #3C3C43;
   --color-text-tertiary: #8E8E93;
   --color-text-inverse: #FFFFFF;
-  
+
   /* iOS 风格圆角 - 使用 radius- 前缀生成 rounded-* 工具类 */
   --radius-ios: 10px;
   --radius-ios-lg: 14px;
   --radius-ios-xl: 20px;
   --radius-ios-2xl: 28px;
-  
+
   /* iOS 风格字体 - 使用 font- 前缀生成 font-* 工具类 */
   --font-ios: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, sans-serif;
-  
+
   /* iOS 风格阴影 - 使用 shadow- 前缀生成 shadow-* 工具类 */
   --shadow-ios: 0 2px 8px rgba(0, 0, 0, 0.1);
   --shadow-ios-lg: 0 4px 16px rgba(0, 0, 0, 0.15);
   --shadow-ios-xl: 0 8px 24px rgba(0, 0, 0, 0.2);
-  
+
   /* iOS 风格间距 - 使用 spacing- 前缀生成 p-*, m-*, gap-* 等工具类 */
   --spacing-ios-xs: 4px;
   --spacing-ios-sm: 8px;
@@ -136,7 +136,7 @@
     font-weight: 500;
     transition: opacity 0.2s;
   }
-  
+
   .ios-button:active {
     opacity: 0.8;
   }
@@ -152,7 +152,7 @@
     border: none;
     outline: none;
   }
-  
+
   .ios-input:focus {
     ring: 2px;
     ring-color: var(--color-primary);
@@ -168,7 +168,7 @@
     border-bottom: 1px solid var(--color-ios-gray-100);
     transition: background-color 0.2s;
   }
-  
+
   .ios-list-item:active {
     background-color: var(--color-ios-gray-50);
   }

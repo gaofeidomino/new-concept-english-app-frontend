@@ -1,5 +1,3 @@
-import { useUserStore } from '@/stores/user'
-
 /**
  * API 请求工具
  * 封装 HTTP 请求，统一处理认证、错误等
@@ -41,11 +39,16 @@ async function request<T = any>(
     ...fetchConfig.headers
   }
 
-  // 添加认证 token
+  // 添加认证 token（从 user store 获取）
   if (!skipAuth) {
-    const userStore = useUserStore()
-    if (userStore.token) {
-      headers['Authorization'] = `Bearer ${userStore.token}`
+    try {
+      const { useUserStore } = await import('@/stores/user')
+      const userStore = useUserStore()
+      if (userStore.token) {
+        (headers as Record<string, string>)['Authorization'] = `Bearer ${userStore.token}`
+      }
+    } catch (error) {
+      // 如果 store 不存在，忽略
     }
   }
 
@@ -148,3 +151,4 @@ export const api = {
 }
 
 export default api
+

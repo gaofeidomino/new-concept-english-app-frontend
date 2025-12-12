@@ -5,11 +5,11 @@
       <div class="not-found-container">
         <div class="not-found-content">
           <ion-icon :icon="alertCircleOutline" class="not-found-icon" />
-          <h1 class="text-ios-title">404</h1>
-          <p class="text-ios-body text-text-secondary">
+          <h1 class="text-2xl font-bold">404</h1>
+          <p class="text-gray-600 mt-2">
             抱歉，您访问的页面不存在
           </p>
-          <BaseButton @click="goHome" class="mt-ios-lg">
+          <BaseButton @click="goHome" class="mt-6">
             返回首页
           </BaseButton>
         </div>
@@ -52,6 +52,7 @@ const goHome = () => {
 .not-found-icon {
   font-size: 80px;
   color: #8e8e93;
-  margin-bottom: ios-md;
+  margin-bottom: 16px;
 }
 </style>
+

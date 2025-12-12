@@ -17,6 +17,7 @@ import './styles/main.css'
 import { Capacitor } from '@capacitor/core'
 import { StatusBar, Style } from '@capacitor/status-bar'
 import { Keyboard } from '@capacitor/keyboard'
+import { initCapacitorPlugins } from './plugins/capacitor'
 
 // 应用初始化
 const app = createApp(App)
@@ -41,6 +42,9 @@ if (Capacitor.isNativePlatform()) {
   Keyboard.addListener('keyboardWillHide', () => {
     // 键盘隐藏时的处理
   })
+
+  // 初始化 Capacitor 插件
+  initCapacitorPlugins()
 }
 
 // 挂载应用

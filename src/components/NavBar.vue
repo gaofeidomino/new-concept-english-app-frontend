@@ -1,7 +1,7 @@
 <template>
   <ion-header :translucent="true" class="ios-header">
     <ion-toolbar>
-      <ion-title v-if="title" class="text-ios-title">{{ title }}</ion-title>
+      <ion-title v-if="title" class="text-lg font-semibold">{{ title }}</ion-title>
       <slot name="start">
         <ion-buttons slot="start" v-if="showBack">
           <ion-back-button :default-href="backHref" />
@@ -68,3 +68,4 @@ ion-toolbar {
   --border-color: #e5e5ea;
 }
 </style>
+
